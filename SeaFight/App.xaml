@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application x:Class="SeaFight.App"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:SeaFight.Converters;assembly=SeaFight"
+             xmlns:local="clr-namespace:SeaFight;assembly=SeaFight"
+             xmlns:models="clr-namespace:SeaFight.Models;assembly=SeaFight"
+             xmlns:styles="clr-namespace:SeaFight.Styles;assembly=SeaFight">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--  Global Styles  -->
+
+            <ResourceDictionary.MergedDictionaries>
+                <styles:BaseStyles />
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <models:FieldColor x:Key="Ic"
+                               Name="{Binding Source={x:Static models:Colors.Idle},
+                                              Path=Name}"
+                               Value="{Binding Source={StaticResource BattleCellColor}}" />
+            <models:FieldColor x:Key="IOc"
+                               Name="{Binding Source={x:Static models:Colors.IdleOvercovered},
+                                              Path=Name}"
+                               Value="{Binding Source={StaticResource BattleCellColorGray}}" />
+            <models:FieldColor x:Key="SIc"
+                               Name="{Binding Source={x:Static models:Colors.ShipIdle},
+                                              Path=Name}"
+                               Value="{Binding Source={StaticResource BattleCellColorRedLight}}" />
+            <models:FieldColor x:Key="SAc"
+                               Name="{Binding Source={x:Static models:Colors.ShipAttacked},
+                                              Path=Name}"
+                               Value="{Binding Source={StaticResource BattleCellColorRed}}" />
+            <models:FieldColor x:Key="SOc"
+                               Name="{Binding Source={x:Static models:Colors.ShipOvercovered},
+                                              Path=Name}"
+                               Value="{Binding Source={StaticResource BattleCellColorBlack}}" />
+
+
+            <converters:StringsToBoolConverter x:Key="StringsToBoolConverter" />
+            <converters:LengthDividerConverter x:Key="LengthDividerConverter" />
+            <converters:LengthMultiplierConverter x:Key="LengthMultiplierConverter"
+                                                  Addition = "{StaticResource FieldsSpacing}"/>
+            <converters:CellStateToColorConverter x:Key="CellStateToColorConverter" />
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

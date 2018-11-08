@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Styles\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Triggers\" />
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="System\IEquatable.cs" />
+    <Compile Remove="Converters\ColorsToColorConverter.cs" />
+    <Compile Remove="Services\MockDataStore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Seafight.zip" />
+  </ItemGroup>
+</Project>

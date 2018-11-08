@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SeaFight.Views.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensions="clr-namespace:SeaFight.Extensions;assembly=SeaFight"
+             xmlns:views="clr-namespace:SeaFight.Views;assembly=SeaFight"
+             x:Name="this"
+             Title="{Binding Title}">
+
+    <ScrollView x:Name="scrollView"
+                BackgroundColor="{StaticResource MainBackgroundColor1}"
+                Padding="{StaticResource FieldsSpacing}">
+        <Grid Padding="0" RowSpacing="{StaticResource FieldsSpacing}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="0"
+                   WidthRequest="{StaticResource ColorPickerWidth}"
+                   HorizontalOptions="Center"
+                   BackgroundColor="{StaticResource BattleCellColor}"
+                   Padding="1"
+                   Style="{StaticResource MainFrameStyle}">
+                <StackLayout x:Name="colorPicker"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="CenterAndExpand"
+                             Orientation="Horizontal"
+                             Spacing="0">
+                    <Button WidthRequest="{Binding ColorPickerCellsCount,
+                                                   ConverterParameter={x:Reference colorPicker},
+                                                   Converter={StaticResource LengthDividerConverter},
+                                                   Mode=OneWay}"
+                            VerticalOptions="Fill"
+                            BackgroundColor="{StaticResource MainBackgroundColor1}"
+                            BindingContext="{x:Reference this}"
+                            Clicked="ColorPickerClicked"
+                            CornerRadius="0" />
+                    <Button WidthRequest="{Binding ColorPickerCellsCount,
+                                                   ConverterParameter={x:Reference colorPicker},
+                                                   Converter={StaticResource LengthDividerConverter},
+                                                   Mode=OneWay}"
+                            VerticalOptions="Fill"
+                            BackgroundColor="{StaticResource MainBackgroundColor2}"
+                            BindingContext="{x:Reference this}"
+                            Clicked="ColorPickerClicked"
+                            CornerRadius="0" />
+                    <Button WidthRequest="{Binding ColorPickerCellsCount,
+                                                   ConverterParameter={x:Reference colorPicker},
+                                                   Converter={StaticResource LengthDividerConverter},
+                                                   Mode=OneWay}"
+                            VerticalOptions="Fill"
+                            BackgroundColor="{StaticResource MainBackgroundColor3}"
+                            BindingContext="{x:Reference this}"
+                            Clicked="ColorPickerClicked"
+                            CornerRadius="0" />
+                    <Button WidthRequest="{Binding ColorPickerCellsCount,
+                                                   ConverterParameter={x:Reference colorPicker},
+                                                   Converter={StaticResource LengthDividerConverter},
+                                                   Mode=OneWay}"
+                            VerticalOptions="Fill"
+                            BackgroundColor="{StaticResource MainBackgroundColor4}"
+                            BindingContext="{x:Reference this}"
+                            Clicked="ColorPickerClicked"
+                            CornerRadius="0" />
+                </StackLayout>
+            </Frame>
+
+            <Frame x:Name="mainFrame"
+                   Grid.Row="1"
+                   Style="{StaticResource MainFrameStyle}">
+                <StackLayout Margin="0"
+                             BackgroundColor="Transparent"
+                             Orientation="Vertical"
+                             Padding="0"
+                             Spacing="0">
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           BackgroundColor="Transparent"
+                           FontSize="Small"
+                           Text="{Binding FieldTitle}" />
+                    <Frame x:Name="mainInnerFrame"
+                           Margin="{StaticResource FieldsSpacing}"
+                           HeightRequest="{Binding Width,
+                                                   Source={x:Reference mainInnerFrame}}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           BackgroundColor="{StaticResource BattleCellColorBlack}"
+                           BorderColor="Transparent"
+                           CornerRadius="0"
+                           HasShadow="false"
+                           Padding="1">
+
+                        <Grid x:Name="battleField"
+                              HeightRequest="{Binding Width,
+                                                      Source={x:Reference battleField}}"
+                              HorizontalOptions="CenterAndExpand"
+                              VerticalOptions="CenterAndExpand"
+                              BackgroundColor="{StaticResource TitleColor}"
+                              ColumnSpacing="1"
+                              Padding="0"
+                              RowSpacing="1" />
+                    </Frame>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           BackgroundColor="Transparent"
+                           FontSize="Small"
+                           Text="{Binding EnemyFieldTitle}" />
+                    <Frame x:Name="mainInnerFrameEnemy"
+                           Margin="{StaticResource FieldsSpacing}"
+                           HeightRequest="{Binding Width,
+                                                   Source={x:Reference mainInnerFrameEnemy}}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           BackgroundColor="{StaticResource BattleCellColorBlack}"
+                           BorderColor="Transparent"
+                           CornerRadius="0"
+                           HasShadow="false"
+                           Padding="1">
+                        <Grid x:Name="battleFieldEnemy"
+                              HeightRequest="{Binding Width,
+                                                      Source={x:Reference battleFieldEnemy}}"
+                              HorizontalOptions="CenterAndExpand"
+                              VerticalOptions="CenterAndExpand"
+                              BackgroundColor="{StaticResource TitleColor}"
+                              ColumnSpacing="1"
+                              Padding="0"
+                              RowSpacing="1" />
+                    </Frame>
+                </StackLayout>
+            </Frame>
+
+            <Frame x:Name="infoFrame"
+                   Grid.Row="2"
+                   Style="{StaticResource MainFrameStyle}">
+                <StackLayout BackgroundColor="Transparent"
+                             Orientation="Vertical"
+                             Padding="0"
+                             Spacing="0">
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 BackgroundColor="Transparent"
+                                 Orientation="Horizontal"
+                                 Padding="0"
+                                 Spacing="5">
+                        <Label HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               BackgroundColor="Transparent"
+                               FontSize="Micro"
+                               IsVisible="{Binding GameStatus,
+                                                   Converter={StaticResource StringsToBoolConverter},
+                                                   ConverterParameter={x:Static extensions:StringExtension.SupportedStatusStrings}}"
+                               Text="Session time:"
+                               TextColor="{StaticResource TitleColor}" />
+                        <Label HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               BackgroundColor="Transparent"
+                               FontSize="Micro"
+                               IsVisible="{Binding GameStatus,
+                                                   Converter={StaticResource StringsToBoolConverter},
+                                                   ConverterParameter={x:Static extensions:StringExtension.SupportedStatusStrings}}"
+                               Text="{Binding SessionTimeStr}"
+                               TextColor="{StaticResource TitleColor}" />
+                    </StackLayout>
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           BackgroundColor="Transparent"
+                           FontSize="Micro"
+                           Text="{Binding RemainingShipCellsStr}" />
+                    <Label HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           BackgroundColor="Transparent"
+                           FontSize="Micro"
+                           Text="{Binding RemainingShipCellsEnemyStr}" />
+                </StackLayout>
+            </Frame>
+
+            <Frame x:Name="buttonsFrame"
+                   Grid.Row="3"
+                   Style="{StaticResource MainFrameStyle}">
+                <Button HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        BackgroundColor="Transparent"
+                        Command="{Binding ControlFightCommand}"
+                        FontSize="Small"
+                        Text="{Binding GameStatus}"
+                        TextColor="{StaticResource TitleColor}" />
+            </Frame>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

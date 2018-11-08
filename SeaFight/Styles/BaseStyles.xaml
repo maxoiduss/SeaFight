@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary x:Class="SeaFight.Styles.BaseStyles"
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--  Dimens  -->
+
+    <x:Int32 x:Key="BattleFieldScale">10</x:Int32>
+    
+    <x:Double x:Key="ColorPickerWidth">160</x:Double>
+    <x:Double x:Key="FieldsSpacing">15</x:Double>
+    
+    <!--  Colors  -->
+
+    <Color x:Key="MainBackgroundColor1">#8CE1F2</Color>
+    <Color x:Key="FrameBackgoundColor1">#6DB7C6</Color>
+
+    <Color x:Key="MainBackgroundColor2">#DF8CF1</Color>
+    <Color x:Key="FrameBackgoundColor2">#C66DC4</Color>
+
+    <Color x:Key="MainBackgroundColor3">#F1D58C</Color>
+    <Color x:Key="FrameBackgoundColor3">#C6B46D</Color>
+
+    <Color x:Key="MainBackgroundColor4">#F1A28C</Color>
+    <Color x:Key="FrameBackgoundColor4">#C6866D</Color>
+
+    <Color x:Key="BattleCellColor">#FFFAEF</Color>
+    <Color x:Key="BattleCellColorRed">#DB4730</Color>
+    <Color x:Key="BattleCellColorGray">#4C4544</Color>
+    <Color x:Key="BattleCellColorRedLight">#D67566</Color>
+    <Color x:Key="BattleCellColorBlack">#070707</Color>
+    
+    <Color x:Key="TitleTextColor">#382159</Color>
+    <Color x:Key="TitleColor">#FF0000</Color>
+
+    <!--  Styles  -->
+
+    <Style x:Key="MainFrameStyle" TargetType="Frame">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource FrameBackgoundColor1}"/>
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="OutlineColor" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="HasShadow" Value="True"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <Style x:Key="BattleCellStyle" TargetType="Button">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource BattleCellColor}"/>
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+</ResourceDictionary>
